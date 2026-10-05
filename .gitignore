@@ -1,0 +1,9 @@
+# Private / source files — must not be published to the public repo
+Yelldy DDP.pdf
+Pasted *.png
+
+# macOS
+.DS_Store
+
+# Local tooling
+.openchamber/

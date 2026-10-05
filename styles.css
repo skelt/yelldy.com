@@ -1,0 +1,238 @@
+/* Yelldy — company site
+   Palette derived from the Yelldy logo (#F4573E red / #F1B725 amber)
+   Type: Lexend (headings) + Source Sans 3 (body) */
+
+:root {
+  --bg: #faf8f5;
+  --surface: #ffffff;
+  --ink: #17181a;
+  --muted: #6b6a67;
+  --border: #e7e4e0;
+
+  --brand: #f4573e;      /* logo red — large text / decorative */
+  --brand-ink: #c4371d;  /* accessible red (~5:1) — buttons, links */
+  --brand-ink-hover: #a62d16;
+  --amber: #f1b725;
+
+  --radius: 14px;
+  --maxw: 1080px;
+  --shadow: 0 1px 2px rgba(23, 24, 26, .04), 0 8px 24px rgba(23, 24, 26, .05);
+
+  --font-head: "Lexend", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-head);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  margin: 0 0 .5em;
+}
+
+p { margin: 0 0 1em; }
+
+a { color: var(--brand-ink); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--brand-ink-hover); }
+
+/* Focus visibility (keyboard) */
+:focus-visible {
+  outline: 3px solid var(--brand-ink);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Skip link */
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ink);
+  color: #fff;
+  padding: .75rem 1rem;
+  border-radius: 0 0 10px 0;
+  z-index: 100;
+}
+.skip:focus { left: 0; }
+
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  border-bottom: 1px solid var(--border);
+  background: rgba(250, 248, 245, .85);
+  backdrop-filter: saturate(140%) blur(6px);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 72px;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-decoration: none;
+}
+.brand img { height: 40px; width: auto; display: block; }
+.brand:hover { color: var(--ink); }
+
+.site-nav { display: flex; gap: 8px; }
+.site-nav a {
+  font-family: var(--font-head);
+  font-weight: 500;
+  font-size: .95rem;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+}
+.site-nav a:hover { background: rgba(23, 24, 26, .06); color: var(--ink); }
+
+/* ---------- Hero ---------- */
+.hero { padding: clamp(56px, 9vw, 104px) 0 clamp(40px, 6vw, 64px); }
+.hero .inner { max-width: 720px; }
+.eyebrow {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: .8rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--brand-ink);
+  margin: 0 0 1rem;
+}
+.hero h1 {
+  font-size: clamp(2.1rem, 5.2vw, 3.4rem);
+  margin-bottom: .5em;
+}
+.hero p.lead {
+  font-size: clamp(1.075rem, 2vw, 1.25rem);
+  color: var(--muted);
+  max-width: 34em;
+  margin-bottom: 1.75em;
+}
+.cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1;
+  color: #fff;
+  background: var(--brand-ink);
+  padding: 15px 24px;
+  border-radius: 12px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: background-color .18s ease, transform .18s ease;
+}
+.btn:hover { background: var(--brand-ink-hover); color: #fff; }
+.btn:active { transform: translateY(1px); }
+
+.link-quiet {
+  font-family: var(--font-head);
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--ink);
+}
+.link-quiet:hover { color: var(--brand-ink); }
+
+/* ---------- Trust strip ---------- */
+.trust { padding: 8px 0 clamp(48px, 7vw, 72px); }
+.trust ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+}
+.trust li {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+.trust .k {
+  display: block;
+  font-family: var(--font-head);
+  font-size: .78rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.trust .v { font-family: var(--font-head); font-weight: 500; font-size: 1rem; }
+
+/* ---------- Sections ---------- */
+.section { padding: clamp(40px, 6vw, 72px) 0; }
+.section h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+.section .prose { max-width: 62ch; }
+.section .prose p { color: #33342f; }
+
+/* Contact card */
+.contact-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: clamp(28px, 4vw, 44px);
+  box-shadow: var(--shadow);
+  max-width: 640px;
+}
+.contact-card h2 { margin-bottom: .4em; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  border-top: 1px solid var(--border);
+  margin-top: clamp(40px, 6vw, 72px);
+  padding: 32px 0 40px;
+  color: var(--muted);
+  font-size: .92rem;
+}
+.site-footer .container { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: space-between; }
+.legal { max-width: 62ch; }
+.footer-links { display: flex; gap: 18px; font-family: var(--font-head); font-weight: 500; }
+.site-footer a { color: var(--muted); }
+
+/* ---------- Legal pages ---------- */
+.page { padding: clamp(40px, 6vw, 72px) 0; }
+.page .prose { max-width: 68ch; }
+.page h1 { font-size: clamp(1.9rem, 4vw, 2.6rem); }
+.page h2 { font-size: 1.25rem; margin-top: 1.8em; }
+.updated { color: var(--muted); font-size: .95rem; margin-top: -.4em; }
+
+/* ---------- Motion preference ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
